@@ -17,7 +17,7 @@ const userSlice = createSlice({
     },
     isAuthChange: (state) => {
       state.isAuthReady = true;
-    },
+    },  
   },
 });
 

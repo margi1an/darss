@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components{
-    .align-content{
-        @apply mx-auto max-w-6xl px-3 mt-3
+    .align-elements {
+        @apply mx-auto max-w-6xl px-4
     }
   }
