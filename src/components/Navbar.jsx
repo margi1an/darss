@@ -1,4 +1,6 @@
 import { useSelector , useDispatch } from "react-redux";
+import './Navbar.css'
+import { NavLink } from "react-router-dom";
 
 
 //firebase
@@ -26,7 +28,11 @@ function Navbar() {
         <div className="navbar-start">
           <h1 className="text-3xl font-bold">My Todo</h1>
         </div>
-        <div className="navbar-center">Links</div>
+        <div className="navbar-center flex gap-3">
+          <NavLink className="btn " to = '/'>Home</NavLink>
+          <NavLink className="btn " to = '/about'>About</NavLink>
+          <NavLink className="btn " to = '/products'>Products</NavLink>
+        </div>
         <div className="navbar-end">
           <div className="flex gap-4 items-center">
             <h4>hi ✋{user.displayName}</h4>
@@ -43,8 +49,8 @@ function Navbar() {
                 />
               </div>
             </div>
-            <button onClick={handleOut} className="btn btn-secondary">
-              Logout
+            <button onClick={handleOut} className="btn btn-primary">
+              Logout ✋
             </button>
           </div>
         </div>

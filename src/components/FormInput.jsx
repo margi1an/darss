@@ -7,7 +7,7 @@ function FormInput({ name, labelText, type }) {
         <div className="label">
           <span className="label-text capitalize">{labelText}</span>
         </div>
-        <input
+        <input 
           type={type}
           name={name}
           placeholder="Type here"
