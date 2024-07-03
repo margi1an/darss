@@ -35,7 +35,7 @@ function Navbar() {
         </div>
         <div className="navbar-end">
           <div className="flex gap-4 items-center">
-            <h4>hi ✋{user.displayName}</h4>
+            <h4>hi ✋ {user.displayName}</h4>
             <div className="avatar">
               <div className="ring-primary ring-offset-base-100 w-10 h-10 rounded-full ring ring-offset-2">
                 <img

@@ -23,7 +23,7 @@ const useLogin = () => {
 
     } catch (error) {
       const errorMessage = error.message
-      toast.error('Please , Error 😏')
+      toast.error(errorMessage)
       setIsPending(false)
 
     }

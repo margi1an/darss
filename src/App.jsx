@@ -8,6 +8,8 @@ import { Home, Login, Register } from "./pages";
 import MainLayout from "./layouts/MainLayout";
 import { action as LoginAction } from "./pages/Login";
 import { action as RegisterAction } from "./pages/Register";
+import { action as HomeAction } from "./pages/Home";
+
 import { ProtectedRoutes } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -32,6 +34,7 @@ function App() {
         {
           index: true,
           element: <Home></Home>,
+          action:HomeAction
         },
         {
           path:'/about',
