@@ -10,6 +10,6 @@ import { Toaster } from 'react-hot-toast';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />
-    <Toaster></Toaster>
+    <Toaster gutter={5}></Toaster>
   </Provider>,
 )

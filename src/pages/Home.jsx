@@ -3,7 +3,7 @@ import { useCollection } from "../hooks/useCollection";
 import { FormInput, FormCheckbox } from "../components";
 import { Form, useActionData } from "react-router-dom";
 import { db } from "../firebase/firebaseConfig";
-import { collection, addDoc , deleteDoc , doc } from "firebase/firestore";
+import { collection, addDoc , deleteDoc , doc , updateDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
@@ -23,6 +23,7 @@ function Home() {
     if(userData) {
       const newDoc = {
         ...userData,
+        completed:userData.completed == 'on' ? true : false,
         uid:user.uid
       }
       if(addDoc(collection(db , 'todos') , newDoc)) {
@@ -36,6 +37,13 @@ function Home() {
       toast.success('Todo Deleted Successfully ✋😀')
     }
     }
+    const changeStatus = async(id)  => {
+      const selectedDoc = doc(db , 'todos' , id)
+      await updateDoc(selectedDoc , {
+        completed: !status
+      })
+      toast.success('Todo Status Updated Successfully ✋😀')
+    }
   return (
     <div className="align-elements">
       <div className="grid grid-cols-2">
@@ -43,10 +51,13 @@ function Home() {
           {todos &&
             todos.map((todo) => {
               return (
-                <div key={todo.id} className=" shadow-xl mr-28 bg-slate-600 text-slate-50 text-2xl rounded p-3 mt-9 flex mb-3 gap-3 align-center justify-between">
+                <div key={todo.id} className={` shadow-xl ${todo.completed ? 'opacity-25' : 'opacity-100'} mr-28 bg-slate-600 text-slate-50 text-2xl rounded p-3 mt-9 flex mb-3 gap-3 align-center justify-between`}>
                   <h3>{todo.title}</h3>
-                  <button onClick={() => deleteDocument(todo.id)} className="btn btn-error text-slate-50">Delete</button>
-                </div>
+                  <div className="text-center flex gap-3">
+                  <button onClick={() => changeStatus(todo.id , todo.completed)} className=" text-1xl btn ">{todo.completed ? 'Uncompleted' : 'Completed'}</button>
+                    <button onClick={() => deleteDocument(todo.id)} className="btn btn-error text-slate-50">Delete</button>
+                  </div>
+                  </div>
               );
             })}
         </div>

@@ -61,7 +61,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       dispatch(login(user));
-      dispatch(isAuthChange());
+      dispatch(isAuthChange())
     });
   }, []);
   return (
